@@ -41,6 +41,10 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "6.0.x"
+      - uses: justalemon/VersionPatcher@v0.7.1
+        with:
+          version: ${{ inputs.version }}
+          csproj-files: "OpenUtau/*.csproj"
       - name: Restore
         run: dotnet restore OpenUtau -r ${{ matrix.os.rid }}
       - name: test
